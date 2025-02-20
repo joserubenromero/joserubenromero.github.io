@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stracker - Empleados</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="C:\Users\joser\Downloads\logorenovado (1).png" alt="Logo de Stracker" class="logo">
+        </div>
+        <h1 class="titulo">S-Tracker</h1>
+        <p class="slogan"><i> "Tu entrenamiento, tu progreso, nuestra guía."</i></p>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="empleados.html">Nuestro Equipo</a></li>
+                <li><a href="mas.html">Más Información</a></li>
+                <li><a href="Stracker.html">Quienes Somos</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="empleados">
+            <h2>Nuestro Equipo</h2>
+            <div id="empleados-container"></div>
+        </section>
+
+        <section id="empleado-destacado">
+            <h2>Conoce a nuestro desarrollador</h2>
+            <div class="empleado">
+                <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="Foto de José Rubén Romero González">
+                <h3>José Rubén Romero González</h3>
+                <p><strong>Edad:</strong> 20 años</p>
+                <p><strong>Ubicación:</strong> Palos de la Frontera</p>
+                <p>Soy de un pueblo donde prácticamente no hay profesionales cercanos que puedan ayudarme a seguir un plan de ejercicio completo, y los que hay son muy caros. Esta aplicación brinda oportunidades a personas como yo que quieren mejorar su condición física sin acceso a ayuda profesional, además de conectar con personas de mi zona interesadas en el mismo deporte para practicar juntos.</p>
+                <p>Soy una persona empática y un desarrollador técnicamente competente, capaz de escuchar y adaptarme de manera positiva y constructiva a las necesidades del equipo y del proyecto. Tengo formación como desarrollador de aplicaciones multiplataforma.</p>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Sport Tracker. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        const nombres = ["Juan", "María", "Carlos", "Ana", "Luis", "Elena", "Pedro", "Sofía"];
+        const apellidos = ["García", "Martínez", "López", "Fernández", "Rodríguez", "Sánchez", "Pérez", "Gómez"];
+        const roles = ["Entrenador", "Nutricionista", "Fisioterapeuta", "Atención al Cliente"];
+
+        function generarEmpleado() {
+            const nombre = nombres[Math.floor(Math.random() * nombres.length)];
+            const apellido = apellidos[Math.floor(Math.random() * apellidos.length)];
+            const rol = roles[Math.floor(Math.random() * roles.length)];
+            const genero = Math.random() > 0.5 ? "men" : "women";
+            const imagen = `https://randomuser.me/api/portraits/${genero}/${Math.floor(Math.random() * 90)}.jpg`;
+
+            return `
+                <div class="empleado">
+                    <img src="${imagen}" alt="Foto de ${nombre}">
+                    <h3>${nombre} ${apellido}</h3>
+                    <p>${rol}</p>
+                </div>
+            `;
+        }
+
+        function mostrarEmpleados(cantidad) {
+            const contenedor = document.getElementById("empleados-container");
+            let empleadosHTML = "";
+            for (let i = 0; i < cantidad; i++) {
+                empleadosHTML += generarEmpleado();
+            }
+            contenedor.innerHTML = empleadosHTML;
+        }
+
+        mostrarEmpleados(6); 
+    </script>
+</body>
+</html>
